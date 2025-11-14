@@ -1,18 +1,17 @@
 using MyService as service from '../../srv/service';
 annotate service.PurchaseOrders with @(
-    UI.HeaderInfo : {
-    Title : {
-        $Type : 'UI.DataField',
-        TypeName : 'Product Text',
-        TypeNamePlural : '{@i18n>@TableTitle}',
-    }
-  },
+    UI.HeaderInfo: {
+        TypeName: 'Purchase Order',
+        TypeNamePlural: 'Purchase Orders',
+        Title:    { Value: PO_ID },
+        Description: { Value: LIFECYCLE_STATUS }
+    },
     UI.FieldGroup #GeneratedGroup : {
         $Type : 'UI.FieldGroupType',
         Data : [
             {
                 $Type : 'UI.DataField',
-                Label : 'CURRENCY',
+                Label : 'Currency',
                 Value : CURRENCY_code,
             },
             {
@@ -22,25 +21,27 @@ annotate service.PurchaseOrders with @(
             },
             {
                 $Type : 'UI.DataField',
+                Label : 'Net Amount',
                 Value : NET_AMOUNT,
             },
             {
                 $Type : 'UI.DataField',
+                Label : 'Tax Amount',
                 Value : TAX_AMOUNT,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'PO_ID',
+                Label : 'Purchase Order ID',
                 Value : PO_ID,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'LIFECYCLE_STATUS',
+                Label : 'Life Cycle Status',
                 Value : LIFECYCLE_STATUS,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'OVERALL_STATUS',
+                Label : 'Over Status',
                 Value : OVERALL_STATUS,
             },
         ],
@@ -56,24 +57,27 @@ annotate service.PurchaseOrders with @(
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
-            Label : 'CURRENCY_code',
+            Label : 'Currency Code',
             Value : CURRENCY_code,
         },
         {
             $Type : 'UI.DataField',
+            Label : 'Gross Amount',
             Value : GROSS_AMOUNT,
         },
         {
             $Type : 'UI.DataField',
+            Label : 'Net Amount',
             Value : NET_AMOUNT,
         },
         {
             $Type : 'UI.DataField',
+            Label : 'Tax Amount',
             Value : TAX_AMOUNT,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'PO_ID',
+            Label : 'Purchase Order ID',
             Value : PO_ID,
         },
     ],
