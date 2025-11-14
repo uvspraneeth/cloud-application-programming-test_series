@@ -11,11 +11,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Cloud Foundry CLI (Linux x64 binary)
-RUN wget -q -O /tmp/cf-cli.tgz "https://packages.cloudfoundry.org/stable?release=linux64-binary&source=github" && \
-    tar -xzf /tmp/cf-cli.tgz -C /tmp && \
-    mv /tmp/cf /usr/local/bin/cf && \
-    chmod +x /usr/local/bin/cf && \
-    rm /tmp/cf-cli.tgz
+RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add - && \
+    echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list && \
+    apt-get update && \
+    apt-get install -y cf-cli
 
 # Install SAP CAP SDK globally
 USER node
