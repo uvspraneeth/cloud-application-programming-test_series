@@ -1,0 +1,175 @@
+@server=http://localhost:4004
+@username=saiuvs
+@password=
+
+
+### Employees
+# @name EmployeeService_Document
+GET {{server}}/odata/v4/employee
+
+### Employees 
+# @name EmployeeService_metadata
+GET {{server}}/odata/v4/employee/$metadata
+
+
+### Employees
+# @name Employees_GET
+GET {{server}}/odata/v4/employee/Employees
+Authorization: Basic {{username}}:{{password}}
+
+
+### Employees
+# @name EmployeesNameWithS_GET
+GET {{server}}/odata/v4/employee/Employees?$filter=startswith(nameFirst, 'S')
+Authorization: Basic {{username}}:{{password}}
+
+### Employees 
+# @name TwoHighestSalaryEmployees_GET
+GET {{server}}/odata/v4/employee/Employees?$orderby=salaryAmount desc&$top=2
+Authorization: Basic {{username}}:{{password}}
+
+### Employees
+# @name Employees_POST
+POST {{server}}/odata/v4/employee/Employees
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "2725231e-3d9b-47e9-a6e9-e2566b9789c7",
+  "nameFirst": "Venkata Sai Praneeth",
+  "nameMiddle": "",
+  "nameLast": "Uppala",
+  "nameInitials": "",
+  "gender": "M",
+  "language": "E",
+  "phoneNumber": "951563-8674",
+  "email": "uvs.praneeth@outlook.com",
+  "loginName": "uvs-2725231",
+  "currency": {
+    "code": "USD"
+  },
+  "salaryAmount": 48999,
+  "accountNumber": "724-2725231",
+  "bankID": "2725231",
+  "bankName": "Bank of Bankoak"
+}
+
+### Employees
+# @name EmployeesSalarylt50000EURO_POST
+POST {{server}}/odata/v4/employee/Employees
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "2725231e-3d9b-47e9-a6e9-e2566b978890",
+  "nameFirst": "Xi ling",
+  "nameMiddle": "",
+  "nameLast": "Chang",
+  "nameInitials": "",
+  "gender": "F",
+  "language": "E",
+  "phoneNumber": "951563-8098",
+  "email": "xi.ling@outlook.com",
+  "loginName": "uvs-2725231",
+  "currency": {
+    "code": "EUR"
+  },
+  "salaryAmount": 47000,
+  "accountNumber": "098-2725278",
+  "bankID": "2725278",
+  "bankName": "Bank of US"
+}
+
+### Employees
+# @name EmployeesSalarygt50000USD_POST
+POST {{server}}/odata/v4/employee/Employees
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "2725231e-3d9b-47e9-a6e9-e2566b978098",
+  "nameFirst": "Dong ta",
+  "nameMiddle": "",
+  "nameLast": "",
+  "nameInitials": "",
+  "gender": "M",
+  "language": "E",
+  "phoneNumber": "951563-8890",
+  "email": "dong.ta@outlook.com",
+  "loginName": "Dong-2725231",
+  "currency": {
+    "code": "USD"
+  },
+  "salaryAmount": 14408421.35,
+  "accountNumber": "890-2725270",
+  "bankID": "2725270",
+  "bankName": "Bank of American freedom"
+}
+
+### Employees
+# @name Employees_PATCH
+PATCH {{server}}/odata/v4/employee/Employees/2725231e-3d9b-47e9-a6e9-e2566b9789c7
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "2725231e-3d9b-47e9-a6e9-e2566b9789c7",
+  "nameFirst": "Venkata Sai Praneeth",
+  "nameMiddle": "",
+  "nameLast": "Uppala",
+  "nameInitials": "",
+  "gender": "M",
+  "language": "E",
+  "phoneNumber": "951563-8674",
+  "email": "uvs.praneeth@outlook.com",
+  "loginName": "uvs-2725231",
+  "currency": {
+    "code": "USD"
+  },
+  "salaryAmount": 50000,
+  "accountNumber": "724-2725231",
+  "bankID": "2725231",
+  "bankName": "Bank of Bankoak"
+}
+
+### Employees
+# @name EmployeesLoginChange_PATCH
+PATCH {{server}}/odata/v4/employee/Employees/2725231e-3d9b-47e9-a6e9-e2566b9789c7
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "2725231e-3d9b-47e9-a6e9-e2566b9789c7",
+  "nameFirst": "Venkata Sai Praneeth",
+  "nameMiddle": "",
+  "nameLast": "Uppala",
+  "nameInitials": "",
+  "gender": "M",
+  "language": "E",
+  "phoneNumber": "951563-8674",
+  "email": "uvs.praneeth@outlook.com",
+  "loginName": "Sai-2725231",
+  "currency": {
+    "code": "USD"
+  },
+  "salaryAmount": 50000,
+  "accountNumber": "724-2725231",
+  "bankID": "2725231",
+  "bankName": "Bank of Bankoak"
+}
+
+
+### Employees
+# @name Employees_DELETE
+DELETE {{server}}/odata/v4/employee/Employees/2725231e-3d9b-47e9-a6e9-e2566b9789c7
+Authorization: Basic {{username}}:{{password}}
+
+### Employees
+# @name EmployeesNameWithS_DELETE
+DELETE {{server}}/odata/v4/employee/Employees/02BD2137-0890-1EEA-A6C2-BB55C197A7FB
+Authorization: Basic {{username}}:{{password}}
+
+### Currencies
+# @name Currencies_GET
+GET {{server}}/odata/v4/employee/Currencies
+Authorization: Basic {{username}}:{{password}}
