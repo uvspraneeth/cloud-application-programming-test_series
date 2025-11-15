@@ -1,14 +1,31 @@
 using MyService as service from '../../srv/service';
 annotate service.PurchaseOrders with @(
+    UI.Identification: [
+    { $Type: 'UI.DataField', Label: 'Purchase Order ID', Value: PO_ID },
+    { $Type: 'UI.DataField', Label: 'Vendor', Value: PARTNER_GUID },
+    { $Type: 'UI.DataField', Label: 'Lifecycle Status', Value: LIFECYCLE_STATUS },
+    { $Type: 'UI.DataField', Label: 'Overall Status', Value: OVERALL_STATUS }
+],
     UI.HeaderInfo: {
         TypeName: 'Purchase Order',
         TypeNamePlural: 'Purchase Orders',
         Title:    { Value: PO_ID },
         Description: { Value: LIFECYCLE_STATUS }
     },
+    UI.SelectionFields: [
+    PO_ID,
+    PARTNER_GUID,
+    LIFECYCLE_STATUS,
+    OVERALL_STATUS
+    ],
     UI.FieldGroup #GeneratedGroup : {
         $Type : 'UI.FieldGroupType',
         Data : [
+            {
+                $Type : 'UI.DataField',
+                Label : 'Purchase Order ID',
+                Value : PO_ID,
+            },
             {
                 $Type : 'UI.DataField',
                 Label : 'Currency',
@@ -31,11 +48,6 @@ annotate service.PurchaseOrders with @(
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'Purchase Order ID',
-                Value : PO_ID,
-            },
-            {
-                $Type : 'UI.DataField',
                 Label : 'Life Cycle Status',
                 Value : LIFECYCLE_STATUS,
             },
@@ -53,32 +65,46 @@ annotate service.PurchaseOrders with @(
             Label : 'General Information',
             Target : '@UI.FieldGroup#GeneratedGroup',
         },
+        {
+        $Type  : 'UI.CollectionFacet',
+        ID     : 'PurchaseOrderItemsFacet',
+        Label  : 'Purchase Order Items',
+        Facets : [
+            {
+                $Type  : 'UI.ReferenceFacet',
+                ID     : 'PurchaseOrderItemsTable',
+                Label  : 'Items',
+                Target : 'Items/@UI.LineItem'
+            }
+        ]
+    }
     ],
+    
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
-            Label : 'Currency Code',
+            Label : '{i18n>purchaseOrderId}',
+            Value : PO_ID,
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : '{i18n>CurrencyCode}',
             Value : CURRENCY_code,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'Gross Amount',
+            Label : '{i18n>grossAmount}',
             Value : GROSS_AMOUNT,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'Net Amount',
+            Label : '{i18n>netAmount}',
             Value : NET_AMOUNT,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'Tax Amount',
+            Label : '{i18n>taxAmount}',
             Value : TAX_AMOUNT,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'Purchase Order ID',
-            Value : PO_ID,
         },
     ],
 );
@@ -112,4 +138,27 @@ annotate service.PurchaseOrders with {
         ],
     }
 };
+
+annotate service.PurchaseOrdersItems with @UI.LineItem : [
+    {
+        $Type : 'UI.DataField',
+        Label : '{i18n>itemNo}',
+        Value : PO_ITEM_POS,
+    },
+    {
+        $Type : 'UI.DataField',
+        Label : '{i18n>product}',
+        Value : PRODUCT_GUID_ID,
+    },
+    {
+        $Type : 'UI.DataField',
+        Label : '{i18n>grossAmount}',
+        Value : GROSS_AMOUNT,
+    },
+    {
+        $Type : 'UI.DataField',
+        Label : '{i18n>netAmount}',
+        Value : NET_AMOUNT,
+    },
+];
 
