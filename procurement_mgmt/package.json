@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@cap-js/sqlite": "^2.1.0",
+    "@sap/cds": "^9.5.1",
+    "@sap/cds-common-content": "^3.1.0",
+    "@sap/cds-dk": "^9.5.0",
+    "@sap/eslint-plugin-cds": "^4.1.0"
+  },
+  "name": "procurement_mgmt",
+  "version": "1.0.0",
+  "description": "This a procurement Management cloud Application Programming (CAP) Model.",
+  "main": "service.js",
+  "scripts": {
+    "run": "cds w"
+  },
+  "author": "uvs",
+  "license": "MIT"
+}
